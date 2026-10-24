@@ -65,7 +65,7 @@ def create_app() -> FastAPI:
             logger.warning(f"⚠️ Auto-seed startup notice: {e}")
 
     # ─── Routers ──────────────────────────────────────────────────────────────
-    @app.get("/", tags=["Root"])
+    @app.api_route("/", methods=["GET", "HEAD"], tags=["Root"])
     async def root():
         return {
             "app": settings.APP_NAME,

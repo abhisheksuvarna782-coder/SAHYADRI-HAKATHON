@@ -156,8 +156,9 @@ def _deterministic_chat_response(
             for i, a in enumerate(alts[:3], 1):
                 net_cost = a.get("additional_cost_inr", 0)
                 net_text = f"+₹{net_cost:,.0f}" if net_cost > 0 else "₹0 (Fully covered by refund)"
+                ttype = str(a.get('transport_type', 'transit')).replace('TransportType.', '').upper()
                 lines.append(
-                    f"{i}. **{a['service_name']}** ({a['transport_type'].upper()})\n"
+                    f"{i}. **{a['service_name']}** ({ttype})\n"
                     f"   • Ticket: ₹{a['price_inr']:,.0f} | Net Additional: **{net_text}**\n"
                     f"   • Departure: {a['departure_time'][11:16]} → Arrival: {a['arrival_time'][11:16]} ({a['duration_minutes'] // 60}h {a['duration_minutes'] % 60}m)"
                 )
@@ -186,9 +187,10 @@ def _deterministic_chat_response(
         if recovery_plan and recovery_plan.get("alternatives"):
             alts = sorted(recovery_plan["alternatives"], key=lambda a: a.get("duration_minutes", 9999))
             fastest = alts[0]
+            fastest_ttype = str(fastest.get('transport_type', 'transit')).replace('TransportType.', '').upper()
             return (
                 f"### ⚡ Fastest Route to Bengaluru\n\n"
-                f"• **Service**: **{fastest['service_name']}** ({fastest['transport_type'].upper()})\n"
+                f"• **Service**: **{fastest['service_name']}** ({fastest_ttype})\n"
                 f"• **Duration**: **{fastest['duration_minutes'] // 60}h {fastest['duration_minutes'] % 60}m**\n"
                 f"• **Timing**: Departs **{fastest['departure_time'][11:16]}** → Arrives **{fastest['arrival_time'][11:16]}**\n"
                 f"• **Fare**: ₹{fastest['price_inr']:,.0f} (+₹{fastest.get('additional_cost_inr', 0):,.0f} net)\n\n"

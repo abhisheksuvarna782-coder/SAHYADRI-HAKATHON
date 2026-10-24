@@ -6,9 +6,24 @@ import type {
   DemoScenarioResponse, Traveller, ChatMessage, DisruptionType,
 } from '@/types';
 
+const rawBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '');
+let resolvedBase = '/api';
+
+if (rawBase) {
+  // If user provided a remote domain like https://myapp.onrender.com without /api, append /api
+  if (rawBase.startsWith('http')) {
+    resolvedBase = rawBase.endsWith('/api') ? rawBase : `${rawBase}/api`;
+  } else {
+    resolvedBase = rawBase;
+  }
+}
+
+export const apiBaseUrl = resolvedBase;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/+$/, '') || '/api',
+  baseURL: resolvedBase,
   headers: { 'Content-Type': 'application/json' },
+  timeout: 45000, // 45s timeout to allow Render free tier cold-start wake up
 });
 
 // ─── Health ────────────────────────────────────────────────────────────────

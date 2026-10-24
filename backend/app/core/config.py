@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: str = ""
 
     # CORS
-    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
+    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000,https://*.vercel.app"
 
     @property
     def cors_origins_list(self) -> List[str]:

@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { getDashboardMetrics, runDemoScenario } from '@/services/api'
+import { getDashboardMetrics, runDemoScenario, apiBaseUrl } from '@/services/api'
 import { apiErrorMessage, fmtINR, fmtRelative, fmtDate, disruptionTypeLabel } from '@/utils'
 import {
   LayoutDashboard, Zap, AlertTriangle, CheckCircle,
@@ -84,10 +84,12 @@ export default function DashboardPage() {
   const navigate = useNavigate()
   const qc = useQueryClient()
 
-  const { data: metrics, isLoading, error } = useQuery({
+  const { data: metrics, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ['dashboard'],
     queryFn: getDashboardMetrics,
     refetchInterval: 30_000,
+    retry: 3,
+    retryDelay: (attempt) => Math.min(attempt * 2000, 6000),
   })
 
   const demoMutation = useMutation({
@@ -108,14 +110,29 @@ export default function DashboardPage() {
   )
 
   if (error) return (
-    <div className="robo-card p-10 text-center max-w-md mx-auto my-12">
+    <div className="robo-card p-8 text-center max-w-lg mx-auto my-12 bg-[#FFFFFF] border border-[#D4D7C7]">
       <div className="w-12 h-12 rounded-xl bg-[#FFF1F1] border border-[#F8CECE] text-[#B83A3A] flex items-center justify-center mx-auto mb-4">
         <AlertTriangle size={24} />
       </div>
-      <p className="font-display font-bold text-base text-[#2E3D28] mb-1">Could not connect to backend</p>
-      <p className="font-mono text-xs text-[#606E5A]">
-        Backend service is starting on <code className="text-[#2E3D28] font-semibold">http://localhost:8000</code>
+      <h3 className="font-display font-bold text-lg text-[#2E3D28] mb-1">Backend Connection Required</h3>
+      <p className="font-mono text-xs text-[#606E5A] mb-4">
+        Attempting to reach <code className="text-[#2E3D28] font-bold bg-[#F4F5EF] px-2 py-0.5 rounded">{apiBaseUrl}</code>
       </p>
+
+      <div className="p-3.5 bg-[#F4F5EF] rounded-xl text-xs text-[#606E5A] text-left mb-5 space-y-1.5 border border-[#D4D7C7]">
+        <p className="font-semibold text-[#2E3D28]">Deployment Diagnosis:</p>
+        <p>• <strong>Render Cold Start:</strong> On Render free tier, web services sleep after 15 min. Waking up takes ~30-45 seconds.</p>
+        <p>• <strong>Vercel Environment Variable:</strong> Ensure <code>VITE_API_BASE_URL</code> is set in Vercel to your Render backend URL (e.g. <code>https://your-backend.onrender.com/api</code>).</p>
+      </div>
+
+      <button
+        onClick={() => refetch()}
+        disabled={isFetching}
+        className="btn btn-primary text-xs px-5 py-2.5 inline-flex items-center gap-2"
+      >
+        <Activity size={14} className={isFetching ? 'animate-spin' : ''} />
+        <span>{isFetching ? 'Connecting to Backend…' : 'Retry Connection'}</span>
+      </button>
     </div>
   )
 

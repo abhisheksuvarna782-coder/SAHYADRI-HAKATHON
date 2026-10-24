@@ -3,7 +3,7 @@
 ### AI-Powered Travel Disruption Recovery & Intelligent Rerouting Platform
 
 **Sahyadri DevHost 2026 / Synergia 26 Hackathon**  
-**Problem Statement 4.1 — Open Innovation**
+**Problem Statement 4.1 **
 
 RouteRecover AI is an intelligent travel recovery platform designed to help travellers recover from unexpected disruptions such as cancelled flights, missed connections, and major delays.
 

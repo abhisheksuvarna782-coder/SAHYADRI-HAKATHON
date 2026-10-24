@@ -23,32 +23,42 @@ async def chat_with_assistant(body: AssistantChatRequest, db: Session = Depends(
     recovery_plan_data = None
     trip_data = None
 
+    plan = None
     if body.recovery_plan_id:
         plan = db.query(RecoveryPlan).filter_by(id=body.recovery_plan_id).first()
-        if plan:
-            try:
-                alts = json.loads(plan.alternatives_json or "[]")
-                recovery_plan_data = {
-                    "id": plan.id,
-                    "status": str(plan.status),
-                    "ai_explanation": plan.ai_explanation or "",
-                    "original_cost_inr": plan.original_cost_inr,
-                    "proposed_cost_inr": plan.proposed_cost_inr,
-                    "additional_cost_inr": plan.additional_cost_inr,
-                    "alternatives": alts,
-                }
-            except Exception:
-                pass
+    if not plan:
+        plan = db.query(RecoveryPlan).order_by(RecoveryPlan.created_at.desc()).first()
 
+    if plan:
+        try:
+            alts = json.loads(plan.alternatives_json or "[]")
+            recovery_plan_data = {
+                "id": plan.id,
+                "status": str(plan.status),
+                "ai_explanation": plan.ai_explanation or "",
+                "original_cost_inr": plan.original_cost_inr,
+                "proposed_cost_inr": plan.proposed_cost_inr,
+                "additional_cost_inr": plan.additional_cost_inr,
+                "alternatives": alts,
+            }
+        except Exception:
+            pass
+
+    trip = None
     if body.trip_id:
         trip = db.query(Trip).filter_by(id=body.trip_id).first()
-        if trip:
-            trip_data = {
-                "id": trip.id,
-                "name": trip.name,
-                "origin": trip.origin,
-                "destination": trip.destination,
-            }
+    if not trip and plan and plan.trip_id:
+        trip = db.query(Trip).filter_by(id=plan.trip_id).first()
+    if not trip:
+        trip = db.query(Trip).order_by(Trip.created_at.desc()).first()
+
+    if trip:
+        trip_data = {
+            "id": trip.id,
+            "name": trip.name,
+            "origin": trip.origin,
+            "destination": trip.destination,
+        }
 
     response, updated_constraints, trigger_regenerate = await ai_chat(
         message=body.message,

@@ -43,13 +43,26 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # ─── Create tables on startup ──────────────────────────────────────────────
+    # ─── Create tables & auto-seed on startup ──────────────────────────────────
     @app.on_event("startup")
     async def startup():
         Base.metadata.create_all(bind=engine)
         logger.info(f"🚀 {settings.APP_NAME} v{settings.APP_VERSION} started")
         logger.info(f"   AI Provider: {settings.AI_PROVIDER}")
         logger.info(f"   Database driver: {engine.dialect.name}")
+
+        # Automatically seed demo dataset if empty
+        try:
+            from app.core.database import SessionLocal
+            from app.models.models import Trip
+            from scripts.seed_db import seed_demo
+            with SessionLocal() as db:
+                if not db.query(Trip).filter_by(id="demo-trip-001").first():
+                    logger.info("⚡ Demo dataset missing — auto-seeding demo database...")
+                    seed_demo(db)
+                    logger.info("✅ Demo dataset auto-seeded successfully!")
+        except Exception as e:
+            logger.warning(f"⚠️ Auto-seed startup notice: {e}")
 
     # ─── Routers ──────────────────────────────────────────────────────────────
     @app.get("/", tags=["Root"])

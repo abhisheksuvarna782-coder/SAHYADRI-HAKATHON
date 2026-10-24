@@ -39,7 +39,7 @@ def ist(year, month, day, hour, minute=0) -> datetime:
 
 def create_tables():
     Base.metadata.create_all(bind=engine)
-    print("✅ Database tables created.")
+    print("[OK] Database tables created.")
 
 
 def seed_demo(db) -> dict:
@@ -346,22 +346,22 @@ def seed_demo(db) -> dict:
     ))
 
     db.commit()
-    print("✅ Demo data seeded successfully.")
+    print("[OK] Demo data seeded successfully.")
     return result
 
 
 def main():
-    print("🚀 RouteRecover AI — Database Initialization")
+    print("[INFO] RouteRecover AI - Database Initialization")
     create_tables()
     db = SessionLocal()
     try:
         ids = seed_demo(db)
-        print(f"\n📍 Demo IDs:")
+        print("\n[INFO] Demo IDs:")
         for k, v in ids.items():
             print(f"   {k}: {v}")
     finally:
         db.close()
-    print("\n✅ Done. Run `uvicorn app.main:app --reload` to start the server.")
+    print("\n[OK] Done. Run `uvicorn app.main:app --reload` to start the server.")
 
 
 if __name__ == "__main__":

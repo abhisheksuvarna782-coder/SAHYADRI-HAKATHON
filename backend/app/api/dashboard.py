@@ -145,14 +145,18 @@ async def run_demo_scenario(db: Session = Depends(get_db)):
 
     trip = db.query(Trip).filter_by(id="demo-trip-001").first()
     if not trip:
-        raise HTTPException(
-            status_code=404,
-            detail="Demo data not seeded. Run: python scripts/seed_db.py"
-        )
+        from scripts.seed_db import seed_demo
+        seed_demo(db)
+        trip = db.query(Trip).filter_by(id="demo-trip-001").first()
 
     flight = db.query(Booking).filter_by(id="demo-booking-flight-001").first()
     if not flight:
-        raise HTTPException(status_code=404, detail="Demo flight booking not found.")
+        from scripts.seed_db import seed_demo
+        seed_demo(db)
+        flight = db.query(Booking).filter_by(id="demo-booking-flight-001").first()
+
+    if not trip or not flight:
+        raise HTTPException(status_code=500, detail="Could not initialize demo trip or bookings.")
 
     # Reset for repeatability
     flight.status = BookingStatus.DISRUPTED
@@ -225,3 +229,12 @@ async def run_demo_scenario(db: Session = Depends(get_db)):
         recovery_plan_id=plan_id,
         message="Demo scenario loaded. IndiGo 6E-2941 cancelled — recovery plan generated.",
     )
+
+
+@router.post("/demo/seed", tags=["Demo"])
+async def seed_demo_endpoint(db: Session = Depends(get_db)):
+    """Manually trigger demo dataset seeding."""
+    from scripts.seed_db import seed_demo
+    result = seed_demo(db)
+    return {"status": "ok", "message": "Demo data seeded successfully", "data": result}
+

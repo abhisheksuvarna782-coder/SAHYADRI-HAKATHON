@@ -10,9 +10,12 @@ const rawBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/,
 let resolvedBase = '/api';
 
 if (rawBase) {
-  // If user provided a remote domain like https://myapp.onrender.com without /api, append /api
   if (rawBase.startsWith('http')) {
-    resolvedBase = rawBase.endsWith('/api') ? rawBase : `${rawBase}/api`;
+    // Strip accidental specific endpoints (like /api/health, /health, /docs) if pasted by user
+    let cleaned = rawBase.replace(/\/(api\/health|health|docs|api\/docs)\/?$/i, '');
+    cleaned = cleaned.replace(/\/+$/, '');
+    // Ensure base ends with /api
+    resolvedBase = cleaned.endsWith('/api') ? cleaned : `${cleaned}/api`;
   } else {
     resolvedBase = rawBase;
   }

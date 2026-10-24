@@ -52,6 +52,17 @@ def create_app() -> FastAPI:
         logger.info(f"   Database driver: {engine.dialect.name}")
 
     # ─── Routers ──────────────────────────────────────────────────────────────
+    @app.get("/", tags=["Root"])
+    async def root():
+        return {
+            "app": settings.APP_NAME,
+            "version": settings.APP_VERSION,
+            "status": "online",
+            "message": "RouteRecover AI Backend is operational",
+            "documentation": "/api/docs",
+            "health": "/api/health",
+        }
+
     prefix = "/api"
     app.include_router(health.router, prefix=prefix)
     app.include_router(trips.router, prefix=prefix)

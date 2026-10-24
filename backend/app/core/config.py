@@ -16,6 +16,7 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "sqlite:///./routerecover.db"
+    ALLOW_SQLITE_IN_PROD: bool = True
 
     # AI Provider
     AI_PROVIDER: str = "none"  # openai | anthropic | none
@@ -36,7 +37,7 @@ class Settings(BaseSettings):
                 raise ValueError("DEBUG must be false when APP_ENV is production.")
             if not self.SECRET_KEY or self.SECRET_KEY == "dev-secret-key":
                 raise ValueError("Set a unique SECRET_KEY when APP_ENV is production.")
-            if self.DATABASE_URL.lower().startswith("sqlite"):
+            if self.DATABASE_URL.lower().startswith("sqlite") and not self.ALLOW_SQLITE_IN_PROD:
                 raise ValueError("Production deployments require a persistent non-SQLite DATABASE_URL.")
         return self
 

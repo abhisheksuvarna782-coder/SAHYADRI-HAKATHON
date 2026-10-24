@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: routerecover-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt && python scripts/seed_db.py"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOW_SQLITE_IN_PROD
+        value: "true"
+      - key: DATABASE_URL
+        value: "sqlite:///./routerecover.db"
+      - key: CORS_ORIGINS
+        value: "http://localhost:5173,https://*.vercel.app"

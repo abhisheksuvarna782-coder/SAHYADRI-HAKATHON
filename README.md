@@ -1,44 +1,50 @@
+
 # 🚀 RouteRecover AI
+### AI-Powered Travel Disruption Recovery & Intelligent Rerouting Platform
 
-> **AI-Powered Travel Disruption Recovery & Intelligent Rerouting Platform**
+**Sahyadri DevHost 2026 / Synergia 26 Hackathon**  
+**Problem Statement 4.1 — Open Innovation**
 
-**Sahyadri DevHost 2026 / Synergia 26 Hackathon**
-Problem Statement 4.1 | Team QuadCoders
+RouteRecover AI is an intelligent travel recovery platform designed to help travellers recover from unexpected disruptions such as cancelled flights, missed connections, and major delays.
 
-RouteRecover AI is an intelligent travel recovery platform that helps travellers recover from unexpected disruptions such as cancelled flights, missed connections, and major delays. Instead of manually searching for alternatives, the platform explores recovery options based on the traveller's schedule, budget, destination, and personal constraints.
+The platform analyses travel requirements, evaluates alternative recovery options, and presents structured recommendations based on the traveller's schedule, budget, destination, and personal constraints.
+
+Instead of manually searching multiple websites, travellers can use a unified interface to understand disruptions, explore alternatives, and make informed recovery decisions.
 
 ---
 
 ## 🌐 Live Deployment
 
-| Service | URL |
-|---------|-----|
-| 🖥️ **Frontend (Vercel)** | [sahyadri-hakathon-334o.vercel.app](https://sahyadri-hakathon-334o.vercel.app/) |
-| ⚙️ **Backend API (Render)** | [sahyadri-hakathon.onrender.com](https://sahyadri-hakathon.onrender.com) |
-| 📖 **API Docs (Swagger)** | [sahyadri-hakathon.onrender.com/api/docs](https://sahyadri-hakathon.onrender.com/api/docs) |
-| 💻 **GitHub Repository** | [github.com/abhisheksuvarna782-coder/SAHYADRI-HAKATHON](https://github.com/abhisheksuvarna782-coder/SAHYADRI-HAKATHON) |
+| Service | Link |
+|---|---|
+| 🖥️ **Live Application** | [Open RouteRecover AI](https://sahyadri-hakathon-334o.vercel.app/) |
+| ⚙️ **Backend API** | [Open Backend API](https://sahyadri-hakathon.onrender.com) |
+| 📖 **API Documentation** | [Swagger API Docs](https://sahyadri-hakathon.onrender.com/api/docs) |
+| 💻 **GitHub Repository** | [View Source Code](https://github.com/abhisheksuvarna782-coder/SAHYADRI-HAKATHON) |
+| 🎥 **Project Demonstration Video** | **[ADD GOOGLE DRIVE VIDEO LINK HERE]** |
 
-> ⚠️ The backend runs on Render's free tier — it may take **30–45 seconds** to wake up after inactivity. Just wait and refresh.
+> **Note:** The backend is hosted on Render and may take 30–45 seconds to wake up after inactivity.
 
 ---
 
 ## 📌 1. Problem Statement
 
-Travel disruptions can turn a planned journey into a stressful and expensive experience. When a flight is cancelled or delayed, travellers often have to search across multiple websites to find alternative flights, trains, buses, accommodation, and transportation.
+Travel disruptions can turn a planned journey into a stressful and expensive experience. When a flight is cancelled or delayed, travellers often need to search across multiple platforms to find alternative transport and manage existing bookings.
 
-The challenge becomes harder when travellers have strict arrival deadlines, existing hotel reservations, connecting journeys, or limited budgets.
+The challenge becomes more complicated when travellers have strict arrival deadlines, connecting journeys, hotel reservations, or limited budgets.
 
 ### ❌ Existing Challenges
 
-- Cancelled or delayed flights disrupt the entire travel itinerary
-- Finding alternative transport requires checking multiple platforms
-- Travellers may miss hotel check-ins, events, meetings, or connecting journeys
-- Alternative routes can exceed the traveller's budget
-- Recovery decisions must consider multiple constraints simultaneously
+- Cancelled or delayed flights disrupt the entire travel itinerary.
+- Finding alternative routes requires checking multiple platforms.
+- Travellers may miss hotel check-ins, events, meetings, or onward connections.
+- Alternative journeys may exceed the available budget.
+- Recovery decisions must consider multiple constraints simultaneously.
+- Travellers lack a unified view of disruption impacts and recovery options.
 
 ### 💡 Our Solution
 
-RouteRecover AI transforms travel disruption into a structured recovery process — helping travellers organise their trip, identify disruptions, evaluate alternatives, and find plans that respect budget, deadlines, and other constraints.
+RouteRecover AI transforms travel disruption into a structured recovery process by helping travellers organise their trips, identify disruptions, analyse affected bookings, evaluate alternatives, and find recovery plans that respect their requirements.
 
 ---
 
@@ -46,14 +52,15 @@ RouteRecover AI transforms travel disruption into a structured recovery process 
 
 RouteRecover AI focuses on **constraint-aware travel recovery** rather than simply suggesting alternative routes.
 
-| Innovation | Description |
-|------------|-------------|
+| Feature | Description |
+|---|---|
 | 🧠 Constraint-Aware Planning | Considers deadlines, budgets, and itinerary requirements |
-| 🤖 AI-Assisted Recovery | Deterministic + LLM-backed intelligent recovery logic |
-| 🗂️ Centralised Workspace | All disruption details and recovery actions in one place |
+| 🤖 AI-Assisted Recovery | Combines deterministic decision-making with optional LLM assistance |
+| 🗂️ Centralised Workspace | Organises disruption information and recovery options |
 | 💰 Budget-Conscious Decisions | Evaluates options against maximum additional spending |
-| ⏰ Deadline-Focused Planning | Prioritises the traveller's required arrival time |
-| 🎯 User-Centred Experience | Structured, clear interface for rapid decision-making |
+| ⏰ Deadline-Focused Planning | Considers the traveller's required arrival time |
+| 🔍 Explainable Recommendations | Helps users understand why options are selected or rejected |
+| 👤 Human-Controlled Decisions | Allows travellers to review recovery recommendations |
 
 ---
 
@@ -63,25 +70,25 @@ RouteRecover AI focuses on **constraint-aware travel recovery** rather than simp
 flowchart TD
     A[Traveller Opens RouteRecover AI] --> B[Create or Select Trip]
     B --> C[Enter Trip Details and Constraints]
-    C --> D[Report or Identify Travel Disruption]
-    D --> E[Analyse Recovery Requirements]
-    E --> F[Evaluate Alternative Recovery Options]
+    C --> D[Report Travel Disruption]
+    D --> E[Analyse Booking Dependencies]
+    E --> F[Generate Recovery Alternatives]
     F --> G[Apply Budget and Deadline Constraints]
-    G --> H[Present Recovery Recommendations]
-    H --> I[Traveller Reviews Available Options]
-    I --> J[Choose a Suitable Recovery Plan]
+    G --> H[Rank Feasible Options]
+    H --> I[Present Recovery Recommendations]
+    I --> J[Traveller Reviews and Selects a Plan]
 ```
 
 ### Workflow Explanation
 
-1. **Trip Setup** — The traveller enters or selects their trip details
-2. **Constraint Collection** — Deadlines and spending limits are recorded
-3. **Disruption Handling** — The disruption is logged in the recovery workflow
-4. **Requirement Analysis** — The system evaluates the traveller's recovery needs
-5. **Alternative Evaluation** — Possible travel recovery options are considered
-6. **Constraint Checking** — Options are assessed against the traveller's requirements
-7. **Recommendation** — Recovery information is presented for the traveller to review
-8. **Decision** — The traveller selects an appropriate recovery plan
+1. **Trip Setup:** The traveller creates or selects a trip.
+2. **Constraint Collection:** The system records deadlines, budgets, and travel preferences.
+3. **Disruption Handling:** A disruption is recorded or simulated.
+4. **Impact Analysis:** The system evaluates affected bookings and itinerary dependencies.
+5. **Alternative Evaluation:** Potential recovery options are generated.
+6. **Constraint Checking:** Options are evaluated against mandatory requirements.
+7. **Recommendation:** Feasible alternatives are ranked and presented.
+8. **Decision:** The traveller reviews the results and selects a suitable recovery plan.
 
 ---
 
@@ -89,64 +96,72 @@ flowchart TD
 
 ```mermaid
 flowchart TB
-    U[Traveller] --> FE[React Frontend\nVercel]
-    FE --> API[FastAPI Backend\nRender]
-    API --> REC[Recovery Logic]
-    API --> AI[AI Integration\nDeterministic + LLM]
+    U[Traveller] --> FE[React Frontend]
+    FE --> API[FastAPI Backend]
+    API --> REC[Recovery Decision Engine]
+    API --> AI[AI Assistant Service]
     API --> DB[(SQLite Database)]
     REC --> API
     AI --> API
     API --> FE
-    FE --> OUT[Recovery Results and Workspace]
+    FE --> OUT[Recovery Workspace and Results]
 ```
 
 ### Architecture Components
 
 | Component | Technology | Purpose |
-|-----------|-----------|---------|
-| Frontend | React.js + TypeScript | User interface and interactive components |
+|---|---|---|
+| Frontend | React + TypeScript | Interactive user interface |
 | Build Tool | Vite | Frontend development and production builds |
-| Styling | Tailwind CSS | Responsive interface styling |
-| API Communication | Axios | HTTP communication with backend |
-| Routing | React Router | Frontend navigation |
-| Backend | Python FastAPI | API endpoints and backend operations |
+| Styling | Tailwind CSS | Responsive interface design |
+| API Communication | Axios | Frontend-backend communication |
+| Routing | React Router | Application navigation |
+| Backend | Python + FastAPI | API endpoints and application logic |
 | Data Validation | Pydantic | Request and response validation |
 | ORM | SQLAlchemy | Database interaction |
 | Database | SQLite | Persistent data storage |
-| Frontend Deployment | Vercel | Live frontend hosting |
-| Backend Deployment | Render | Live backend hosting |
+| AI Integration | OpenAI / Anthropic, when configured | AI-assisted recovery explanations |
+| Frontend Hosting | Vercel | Web application deployment |
+| Backend Hosting | Render | Backend API deployment |
 
 ---
 
 ## ✨ 5. Key Features
 
 ### 📊 Dashboard
-Central place to view travel information, active trips, disruptions, and recovery metrics.
+A centralised overview of trips, bookings, disruptions, and recovery activity.
 
 ### 🧳 Trip Management
-Organise trip details, bookings (flights, hotels, trains), and traveller information.
+Organise trip information, travel bookings, and itinerary details.
 
 ### 🚨 Disruption Centre
-Record and handle travel disruptions including flight cancellations, delays, and missed connections.
+Record and manage travel disruptions, including flight cancellations, delays, and missed connections.
 
 ### 🤖 AI-Assisted Recovery
-Analyses travel requirements and evaluates alternatives using built-in deterministic intelligence and optional LLM support (OpenAI / Anthropic).
+Analyse recovery requirements and provide assistance through deterministic decision logic and optional LLM integration.
 
 ### 🗺️ Recovery Workspace
-Brings disruption information and recovery options together in a structured, interactive workspace.
+Explore recovery alternatives, compare options, and review the reasons behind recommendations.
 
 ### ⚙️ Traveller Constraints
-Supports constraint-aware planning for:
+Supports constraint-aware planning based on:
+
 - Maximum additional spending
 - Required arrival time
 - Destination and travel preferences
 - Existing itinerary commitments
 
 ### 💬 AI Assistant
-Chat-based assistant with instant answers for common travel recovery queries — no API key required for demo mode.
+Provides conversational assistance for travel recovery questions, with deterministic fallback behaviour when configured AI services are unavailable.
+
+### 📜 Recovery History
+Review previous recovery activity and recorded decisions.
 
 ### 📱 Responsive Interface
-Works across desktops, tablets, and mobile devices.
+Provides a responsive application experience across desktop, tablet, and mobile screens.
+
+### 🎨 Interactive User Experience
+Includes animated interface elements, interactive visualisations, and an enhanced dashboard experience.
 
 ---
 
@@ -154,48 +169,57 @@ Works across desktops, tablets, and mobile devices.
 
 **Scenario: Cancelled Mangaluru–Bengaluru Flight**
 
-| Requirement | Details |
-|-------------|---------|
+| Requirement | Example |
+|---|---|
 | Original Journey | Mangaluru → Bengaluru |
-| Disruption | IndiGo flight cancellation |
-| Hotel Reservation | The Leela Palace, Bengaluru |
+| Disruption | Flight cancellation |
+| Hotel Reservation | Bengaluru hotel |
 | Next Journey | Train to Mysuru |
 | Train Departure | 5:00 PM |
 | Required Arrival Deadline | 4:00 PM |
 | Maximum Additional Spending | ₹1,500 |
 
-The traveller must reach Bengaluru before 4:00 PM to manage the onward journey. RouteRecover AI evaluates alternatives (direct train, bus + metro, alternative flight) against both the time constraint and the ₹1,500 budget.
+The traveller needs to reach Bengaluru before the onward journey. RouteRecover AI evaluates possible alternatives against the time constraint, available budget, and itinerary requirements.
+
+*This is an illustrative demonstration scenario. The displayed travel alternatives and prices should not be interpreted as live provider availability.*
 
 ---
 
 ## 🛠️ 7. Technology Stack
 
 ### Frontend
-- React.js + TypeScript
+- React.js
+- TypeScript
 - Vite
 - Tailwind CSS
 - Axios
 - React Router
-- Framer Motion (animations)
+- Framer Motion
 - TanStack React Query
+- Three.js and React Three Fiber
 
 ### Backend
 - Python 3
 - FastAPI
-- Pydantic + Pydantic Settings
+- Pydantic
+- Pydantic Settings
 - SQLAlchemy
 - Uvicorn
 
 ### Database
-- SQLite (auto-seeded with demo data on startup)
-
-### Deployment
-- **Frontend** → Vercel (auto-deploy from GitHub)
-- **Backend** → Render (auto-deploy from GitHub)
+- SQLite
+- Automatically initialised demonstration data
 
 ### AI & Recovery Logic
-- Deterministic constraint-aware recovery engine (no API key needed)
-- Optional: OpenAI / Anthropic LLM integration
+- Deterministic constraint-aware recovery engine
+- Booking and itinerary impact analysis
+- Alternative evaluation and ranking
+- Optional OpenAI / Anthropic integration
+
+### Deployment
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Version Control:** Git and GitHub
 
 ---
 
@@ -204,9 +228,10 @@ The traveller must reach Bengaluru before 4:00 PM to manage the onward journey. 
 ### Prerequisites
 
 - Git
-- Node.js 18+ and npm
-- Python 3.10+
-- A code editor (VS Code recommended)
+- Node.js 18 or later
+- npm
+- Python 3.10 or later
+- A code editor such as Visual Studio Code
 
 ### Step 1 — Clone the Repository
 
@@ -220,24 +245,45 @@ cd SAHYADRI-HAKATHON
 ```bash
 cd backend
 python -m venv .venv
+```
 
-# Windows
+Activate the virtual environment.
+
+**Windows:**
+
+```bash
 .venv\Scripts\activate
+```
 
-# macOS/Linux
+**macOS / Linux:**
+
+```bash
 source .venv/bin/activate
+```
 
+Install the dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-# Run the backend
+Start the backend server:
+
+```bash
 uvicorn app.main:app --reload --port 8000
 ```
 
-The backend auto-seeds demo data on first startup. No manual database setup needed.
+The backend API will be available at:
+
+`http://localhost:8000`
+
+API documentation:
+
+`http://localhost:8000/api/docs`
 
 ### Step 3 — Set Up the Frontend
 
-Open a new terminal:
+Open a new terminal from the repository root:
 
 ```bash
 cd frontend
@@ -250,119 +296,117 @@ Create a `.env` file in the `frontend/` directory:
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
-Start the development server:
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
-Vite will show the local URL (usually `http://localhost:5173`).
+The frontend will generally be available at:
 
-### Step 4 — Environment Variables (Production / Vercel)
+`http://localhost:5173`
 
-For the deployed Vercel frontend, set this environment variable in the Vercel dashboard:
+### Step 4 — Optional AI Configuration
 
-| Variable | Value |
-|----------|-------|
-| `VITE_API_BASE_URL` | `https://sahyadri-hakathon.onrender.com` |
-
-No other frontend environment variables are required.
-
-### Optional — AI Provider Keys (Backend)
-
-Add these to a `backend/.env` file for real LLM responses (demo mode works without them):
+Configure the appropriate AI provider credentials in the backend environment when real LLM responses are required.
 
 ```env
-OPENAI_API_KEY=sk-...
-# or
-ANTHROPIC_API_KEY=sk-ant-...
+AI_PROVIDER=none
+OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
 ```
+
+Set `AI_PROVIDER` to the provider supported by your configuration when enabling an AI integration. Never commit real API keys or other secrets to GitHub.
 
 ---
 
-## 🌐 9. Live Demo and Repository
+## 🎥 9. Project Demonstration Video
 
-| Link | URL |
-|------|-----|
-| 🖥️ Live Application | https://sahyadri-hakathon-334o.vercel.app/ |
-| ⚙️ Backend API | https://sahyadri-hakathon.onrender.com |
-| 📖 API Documentation | https://sahyadri-hakathon.onrender.com/api/docs |
-| 💻 GitHub Repository | https://github.com/abhisheksuvarna782-coder/SAHYADRI-HAKATHON |
+The demonstration video showcases the application's interface, travel disruption workflow, recovery engine, and key features.
+
+**Google Drive Video Link:**  
+[ADD YOUR GOOGLE DRIVE VIDEO LINK HERE]
+
+> Replace the placeholder with the shareable Google Drive URL after uploading the final demonstration video. Ensure the link permissions allow reviewers to view the video.
 
 ---
 
 ## 🔐 10. Reliability and Limitations
 
-- **Demo Mode**: All booking changes are **simulated** — no real provider changes are made
-- **Cold Starts**: Render free tier may take 30–45 seconds to wake up after inactivity
-- **SQLite**: Database resets on fresh Render deploys; demo data is auto-seeded on startup
-- **AI Responses**: Deterministic answers are provided in demo mode; real LLM responses require API keys
+- **Demonstration Mode:** Booking changes and travel recovery scenarios may be simulated. The application does not automatically make real bookings or modify provider reservations.
+- **Backend Cold Starts:** The Render free tier may take time to respond after inactivity.
+- **Database Persistence:** SQLite persistence depends on the hosting environment and deployment configuration.
+- **AI Availability:** Real LLM responses depend on the configured provider and valid credentials.
+- **Live Travel Data:** Real-time schedules, fares, and provider availability require appropriate external integrations.
 
 ---
 
 ## 🚀 11. Future Enhancements
 
-- **Live Travel API Integration** — Real transport schedules, fares, and availability
-- **Intelligent Multimodal Routing** — Combine flights, trains, buses into one plan
-- **Advanced Constraint Optimisation** — Rank plans using budget, arrival time, and preferences
-- **Real-Time Disruption Monitoring** — Detect disruptions through external data sources
-- **Mobile App** — Native iOS and Android experience
-- **Booking Integration** — Support real booking workflows
-- **Explainable AI** — Show reasoning behind each recovery recommendation
+- Integration with live airline, railway, and bus availability APIs.
+- Intelligent multimodal route planning.
+- Real-time travel disruption monitoring.
+- Automated notifications for significant disruptions.
+- Improved booking-dependency analysis.
+- Real booking and rebooking integrations.
+- Enhanced explainable AI recommendations.
+- Multilingual travel assistance.
+- Mobile application support.
+- Advanced recovery analytics and reporting.
 
 ---
 
-## 👨‍💻 12. Team QuadCoders
+## 👥 12. Project Contributions
 
-Developed by **Team QuadCoders** for **Sahyadri DevHost 2026 / Synergia 26 Hackathon**
-at A.J. Institute of Engineering and Technology, Mangaluru.
+- **Abhishek Suvarna** — Team Lead, Frontend Design & Backend Integration
+- **Rishitha R** — Backend Development & API Design
+- **Ajaya Raj A.N** — AI Decision Engine & Recovery Logic
+- **Ritu R Suvarna** — Testing, Quality Assurance & Demonstration Video
 
-| Team Member | Role | Responsibilities |
-|-------------|------|-----------------|
-| Abhishek Suvarna | Team Lead, Backend & AI | Team coordination, backend development, AI integration, and recovery logic |
-| Rishitha R | Frontend Developer | UI development, frontend components, and user experience |
-| Ajay Raj A N | Core Integration | Frontend-backend connectivity and system integration |
-| Ritu R Suvarna | Research & Documentation | Problem research, documentation, and project presentation |
+### Team Lead Links
 
-### 🔗 Team Lead Links
-- GitHub: [github.com/abhisheksuvarna782-coder](https://github.com/abhisheksuvarna782-coder)
-- LinkedIn: [linkedin.com/in/abhishek-suvarna-1bb2b6335](https://www.linkedin.com/in/abhishek-suvarna-1bb2b6335/)
+- **GitHub:** [abhisheksuvarna782-coder](https://github.com/abhisheksuvarna782-coder)
+- **LinkedIn:** [Abhishek Suvarna](https://www.linkedin.com/in/abhishek-suvarna-1bb2b6335/)
 
-### 🏛️ Project Information
+---
+
+## 🏛️ 13. Project Information
 
 | Detail | Information |
-|--------|-------------|
+|---|---|
 | Project Name | RouteRecover AI |
-| Team Name | QuadCoders |
 | Institution | A.J. Institute of Engineering and Technology |
 | Location | Mangaluru, Karnataka, India |
 | Hackathon | Sahyadri DevHost 2026 / Synergia 26 |
 | Problem Statement | 4.1 |
+| Project Domain | AI-Powered Travel Recovery |
 
 ---
 
-## 🤝 13. Contributing
+## 🤝 14. Contributing
 
-Contributions, feedback, and suggestions are welcome.
+Suggestions, feedback, and improvements are welcome.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Implement and test your changes
-4. Commit with a descriptive message (`git commit -m "feat: your feature"`)
-5. Open a pull request describing the improvement
+1. Fork the repository.
+2. Create a feature branch.
+3. Implement and test your changes.
+4. Commit your changes with a descriptive message.
+5. Submit a pull request describing the improvement.
 
 ---
 
-## 📄 14. License
+## 📄 15. License
 
-This project was built for hackathon demonstration purposes. No specific open-source license is declared. If you intend to distribute or reuse this project publicly, add an appropriate `LICENSE` file to the repository.
+This project was developed for hackathon demonstration purposes. No specific open-source license is declared in this README. Add an appropriate `LICENSE` file if the project is intended for public redistribution.
 
 ---
 
 <div align="center">
 
-⭐ **If you find RouteRecover AI interesting, give it a star on GitHub!**
+### ✈️ RouteRecover AI
 
-**RouteRecover AI — Smarter decisions when travel plans go wrong. ✈️**
+**Smarter Decisions When Travel Plans Go Wrong.**
+
+Built with ❤️ for Sahyadri DevHost 2026 / Synergia 26 Hackathon.
 
 </div>

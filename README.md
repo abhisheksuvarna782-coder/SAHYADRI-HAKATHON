@@ -181,7 +181,7 @@ Supports constraint-aware planning based on:
 - Maximum additional spending
 - Required arrival time
 - Destination and travel preferences
-- Existing itinerary commitments
+- Existing itinerary commitments.
 
 ### 💬 AI Assistant
 Provides conversational assistance for travel recovery questions, subject to the configured AI provider and available fallback functionality.
